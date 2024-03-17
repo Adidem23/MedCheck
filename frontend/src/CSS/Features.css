@@ -1,0 +1,11 @@
+.heading-style-h1 {
+    letter-spacing: .02rem;
+    font-size: 5.5rem;
+    font-weight: 700;
+    line-height: .95;
+    color: whitesmoke;
+    display: block;
+    margin: auto;
+    width: fit-content;
+    margin-top: 30px;
+}

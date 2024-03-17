@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Palanquin+Dark:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: "Palanquin Dark", sans-serif;
+    background-color: black;
+    /* height: 7500px; */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    color: black;
+    padding: 1.5rem 2rem;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.logo-text {
+    margin-left: 1rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    /* Increased gap */
+}
+
+.icon-links{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links li a {
+    color: whitesmoke;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 0.5rem 0.75rem;
+}
+
+.icons li a {
+    color: whitesmoke;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 0.5rem 0.75rem;
+}
+
+.nav-links li a:hover {
+    color: #5F5D9C;
+    border-radius: 20%;
+}
