@@ -3,6 +3,7 @@ import { Button } from "@nextui-org/react";
 import windImage from '../../assets/Wind_hashira.jpg';
 import { HeartIcon } from '../Icons/HeartIcon';
 import { CameraIcon } from '../Icons/CameraIcon';
+import {Link} from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -44,9 +45,10 @@ const Navbar = () => {
 
             </ul>
 
-            <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
-                Explore
-            </Button>
+           <Link to={"/signup"}><Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" >
+                SignUp
+            </Button></Link> 
+
         </nav>
     );
 
