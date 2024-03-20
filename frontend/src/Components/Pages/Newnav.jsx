@@ -56,7 +56,7 @@ const Newnav = () => {
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><Role /></li>
-                {RoleOfUser==="Doctor"?<><li className='text-white'><a className='px-2 text-black dark:text-white hover:underline my-2' href={"/"}>DocDash</a></li></>:RoleOfUser==="Patient"?<><li><a className='px-2 text-black dark:text-white hover:underline my-2' href={"http://localhost:3000"}>PatiDash</a></li></>:<></>}
+                {RoleOfUser==="Doctor"?<><li className='text-white'><a className='px-2 text-black dark:text-white hover:underline my-2' href={"/docDash"}>DocDash</a></li></>:RoleOfUser==="Patient"?<><li><a className='px-2 text-black dark:text-white hover:underline my-2' href={""}>PatiDash</a></li></>:<></>}
             </ul>
 
             <ul className="icon-links">
