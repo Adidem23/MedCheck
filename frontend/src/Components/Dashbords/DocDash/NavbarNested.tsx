@@ -14,7 +14,7 @@ import { Logo } from './Logo';
 import classes from '../DocDash/NavbarNested.module.css';
 
 const mockdata = [
-  { label: 'Patients', icon: IconGauge,links:[{ label: 'All Patients',link:''}]},
+  { label: 'Patients', icon: IconGauge,links:[{ label: 'AllPatients',link:''}]},
   {
     label: 'Prescriptions',
     icon: IconNotes,
@@ -24,7 +24,7 @@ const mockdata = [
     ],
   },
   { label: 'Analytics', icon: IconPresentationAnalytics },
-  { label: 'Settings', icon: IconAdjustments },
+  { label: 'Profile', icon: IconAdjustments,links:[{ label: 'PersonalProfile',link:'/profile'}]},
 ];
 
 export function NavbarNested() {
@@ -49,7 +49,7 @@ export function NavbarNested() {
         <UserButton />
       </div>
     </nav>
-    <div className='text-white' id="ManupulateDiv" style={{border:'3px solid red',width:'80%'}}>
+    <div className='text-white' id="ManupulateDiv" style={{width:'80%',height:'100vh'}}>
     MaxVerstappen
     </div>
     </div>

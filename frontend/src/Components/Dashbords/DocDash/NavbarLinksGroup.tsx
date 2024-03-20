@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Group, Box, Collapse, ThemeIcon, Text, UnstyledButton, rem } from '@mantine/core';
 import { IconCalendarStats, IconChevronRight } from '@tabler/icons-react';
 import Allpatients from './Pages/Allpatients';
+import Prescription from './Pages/Prescription';
 import ReactDOM from 'react-dom/client';
+import { useNavigate } from 'react-router-dom';
 import classes from '../../../Components/Dashbords/DocDash/NavbarLinksGroup.module.css';
 
 interface LinksGroupProps {
@@ -12,7 +14,6 @@ interface LinksGroupProps {
   links?: { label: string; link: string }[];
 
 }
-
 
 export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksGroupProps) {
   const hasLinks = Array.isArray(links);
@@ -25,12 +26,19 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
       key={link.label}
       onClick={(event) => {
         event.preventDefault();
-        const Div=document.querySelector("#ManupulateDiv");
-        ReactDOM.createRoot(Div).render(<Allpatients/>)
+        const Div = document.querySelector("#ManupulateDiv");
+        if (link.label === "AllPatients") {
+          ReactDOM.createRoot(Div).render(<Allpatients />);
+        } else if (link.label === "AllPrescriptions") {
+          ReactDOM.createRoot(Div).render(<Prescription />);
+        } else if(link.label==="PersonalProfile") {
+          window.location.href="http://localhost:5173/profile"
+        }
+
       }}
     >
       {link.label}
-    </Text>
+    </Text >
   ));
 
   return (
