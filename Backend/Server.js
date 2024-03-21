@@ -82,6 +82,8 @@ app.post('/RegisterUser', async (req, res) => {
         const NewPatient = new PatientDb({
             Name: WebsiteUser.Name,
             Email: WebsiteUser.Email,
+            ImageURL: WebsiteUser.ImageUrl,
+            FilledProfile: false
         })
 
         NewPatient.save().then(() => {
@@ -106,6 +108,43 @@ app.get("/getAllPatients", async (req, res) => {
     })
 })
 
+app.get("/getAllDoctors", async (req, res) => {
+    DoctorsDb.find().then((doctors) => {
+        console.log("Doctors Data Has Been Sent to Frontend");
+        res.send(doctors);
+    }).catch((err) => {
+        console.log(`${err} Occured while Fetching data`);
+    })
+})
+
+
+app.post("/CheckPorfile", async (req, res) => {
+    const UserMail = req.body.UserEmail;
+
+    PatientDb.findOne({ Email: UserMail }).then((item) => {
+        res.send(item.FilledProfile);
+    }).catch((err) => {
+        console.log(`${err} is Occured`);
+    })
+
+})
+
+app.post("/UpdatePatientProfile", async (req, res) => {
+    const UserMail = req.body.UserEmail;
+    const UpdateData = req.body.UpdateData;
+
+    const query = { Email: UserMail };
+    const update = { $set: { BloodGroup: UpdateData.BloodGroup, FilledProfile: true, Weight: UpdateData.Weight, Age: UpdateData.Age } , $push:{MedicalHistory:UpdateData.Disease,Allergy:UpdateData.Allegery} };
+
+    PatientDb.findOneAndUpdate(query, update)
+        .then(updatedDocument => {
+            console.log("Updated document:", updatedDocument);
+        })
+        .catch(error => {
+            console.error("Error occurred:", error);
+        });
+
+})
 
 app.post("/GivePres", async (req, res) => {
     const Drugsdata = req.body.AllMedicines;
@@ -113,18 +152,18 @@ app.post("/GivePres", async (req, res) => {
 
         const responseData = await axios.post(`http://127.0.0.1:8000/check/${Drugsdata[0]}/${Drugsdata[1]}`);
 
-        if (responseData.data=== "Notcompatible") {
+        if (responseData.data === "Notcompatible") {
             const prompt = `How ${Drugsdata[0]} and ${Drugsdata[1]} are not Compatible??`;
             const result = await model.generateContent(prompt);
             const response = await result.response;
             const text = response.text();
-            const Reason="NotCompatible"
-            const Actualtext={
-                text:text,
-                Reason:Reason
+            const Reason = "NotCompatible"
+            const Actualtext = {
+                text: text,
+                Reason: Reason
             }
             res.send(Actualtext);
-        }else{
+        } else {
             res.send("Drugs are Compatible");
         }
 

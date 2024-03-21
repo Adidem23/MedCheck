@@ -53,10 +53,9 @@ const AllPatientsCard = () => {
                         <CardHeader className="flex gap-3">
                             <Image
                                 alt="nextui logo"
-                                height={40}
-                                radius="sm"
-                                src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                                width={40}
+                                height={140}
+                                src={val.ImageURL}
+                                width={100}
                             />
                             <div className="flex flex-col">
                                 <p className="text-md">{val.Name}</p>
@@ -64,9 +63,16 @@ const AllPatientsCard = () => {
                             </div>
                         </CardHeader>
                         <Divider />
+                        <div className='flex flex-row'>
                         <CardBody>
-                            <p>Make beautiful websites regardless of your design experience.</p>
+                            <p>BloodGroup &nbsp; {val.BloodGroup} </p>
+                            <p>Age  &nbsp;  {val.Age} Years</p>
+                            <p>Weight  &nbsp;  {val.Weight} KG</p>
                         </CardBody>
+                        <CardBody>
+                            <p><ul>Medical History <li style={{listStyle:'initial'}}>{val.MedicalHistory.map((item)=>{return(<>&nbsp; {item}</>)})}</li></ul></p>
+                        </CardBody>
+                        </div>
                         <Divider />
                         <CardFooter className='flex flex-column'>
                             {ClickedIndex !== index && <>

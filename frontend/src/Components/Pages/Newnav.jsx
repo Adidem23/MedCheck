@@ -56,7 +56,7 @@ const Newnav = () => {
             <ul className="nav-links">
                 <li><a href="#">About</a></li>
                 <li><Role /></li>
-                {RoleOfUser === "Doctor" ? <><li className='text-white'><a className='px-2 text-black dark:text-white hover:underline my-2' href={"/docDash"}>DocDash</a></li></> : RoleOfUser === "Patient" ? <><li><a className='px-2 text-black dark:text-white hover:underline my-2' href={""}>PatiDash</a></li></> : <></>}
+                {RoleOfUser === "Doctor" ? <><li className='text-white'><a className='px-2 text-black dark:text-white hover:underline my-2' href={"/docDash"}>DocDash</a></li></> : RoleOfUser === "Patient" ? <><li><a className='px-2 text-black dark:text-white hover:underline my-2' href={"/PatDash"}>PatiDash</a></li></> : <></>}
             </ul>
 
 

@@ -34,6 +34,7 @@ export default function Role() {
         const User = {
           Name: user.fullName,
           Email: user.primaryEmailAddress.emailAddress,
+          ImageUrl:user.imageUrl,
           Role: 'Doctor'
         }
     
@@ -49,6 +50,7 @@ export default function Role() {
         const User = {
           Name: user.fullName,
           Email: user.primaryEmailAddress.emailAddress,
+          ImageUrl:user.imageUrl,
           Role: 'Patient'
         }
     
