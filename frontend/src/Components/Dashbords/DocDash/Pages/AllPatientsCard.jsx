@@ -89,9 +89,10 @@ const AllPatientsCard = () => {
                             <div>
                                 <div className='flex flex-row' style={{ marginLeft: '20px' }}>
                                     <Input
+                                        isClearable
                                         type="text"
                                         label="Enter Medicines"
-                                        className="max-w-xs bg-black text-white"
+                                        className="max-w-xs bg-black text-black"
                                         onChange={(e) => { setPresCInput(e.target.value) }}
                                     />
                                     <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px', marginTop: '10px' }} onClick={AddPrescribedList}>

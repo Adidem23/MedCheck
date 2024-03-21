@@ -134,7 +134,7 @@ app.post("/UpdatePatientProfile", async (req, res) => {
     const UpdateData = req.body.UpdateData;
 
     const query = { Email: UserMail };
-    const update = { $set: { BloodGroup: UpdateData.BloodGroup, FilledProfile: true, Weight: UpdateData.Weight, Age: UpdateData.Age } , $push:{MedicalHistory:UpdateData.Disease,Allergy:UpdateData.Allegery} };
+    const update = { $set: { BloodGroup: UpdateData.BloodGroup, FilledProfile: true, Weight: UpdateData.Weight, Age: UpdateData.Age }, $push: { MedicalHistory: UpdateData.Disease, Allergy: UpdateData.Allegery } };
 
     PatientDb.findOneAndUpdate(query, update)
         .then(updatedDocument => {
@@ -150,22 +150,33 @@ app.post("/GivePres", async (req, res) => {
     const Drugsdata = req.body.AllMedicines;
     try {
 
-        const responseData = await axios.post(`http://127.0.0.1:8000/check/${Drugsdata[0]}/${Drugsdata[1]}`);
+        const responseData = await axios.post(`http://127.0.0.1:8000/check/${Drugsdata}`);
 
-        if (responseData.data === "Notcompatible") {
-            const prompt = `How ${Drugsdata[0]} and ${Drugsdata[1]} are not Compatible??`;
+        async function GenerateGeminiResponse(elem) {
+            const prompt = `Justify this Sentence ${elem} in 500 words and tell level of  Severity of non-compatibleness`;
             const result = await model.generateContent(prompt);
             const response = await result.response;
             const text = response.text();
-            const Reason = "NotCompatible"
             const Actualtext = {
+                Elem: `${elem}`,
                 text: text,
-                Reason: Reason
+                Data: responseData.data
             }
-            res.send(Actualtext);
-        } else {
-            res.send("Drugs are Compatible");
+            try{
+                res.send(Actualtext)
+            }catch{err =>console.log(`${err} is occured`)};
         }
+
+        responseData.data.forEach((elem) => {
+            if (elem.includes("are compatible")) {
+
+            }else if(elem.includes("Sorry for the inconvenience")){
+
+            }else {
+                GenerateGeminiResponse(elem)
+            }
+        })
+
 
     } catch {
         err => {

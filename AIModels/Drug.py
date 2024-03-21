@@ -1,11 +1,6 @@
-from fastapi import FastAPI, HTTPException
 import pandas as pd
-import itertools
 
-app = FastAPI()
-
-# Load data
-df = pd.read_csv('./drug_to_drug.csv', low_memory=False)
+df = pd.read_csv('/content/drug_to_drug.csv', low_memory=False)
 
 def check_compatibility(drug1, drug2, df):
     drug1_matches = df[df['name'].str.lower() == drug1.lower()]
@@ -52,9 +47,7 @@ def check_compatibility_for_multiple_drugs(drug_names, df):
             result.append(check_compatibility(available_drugs[i], available_drugs[j], df))
     return result
 
-@app.post("/check/{drug_names}")
-async def check_compatibility_endpoint(drug_names: str):
-    results = check_compatibility_for_multiple_drugs(drug_names, df)
-    for res in results:
-        print(res)
-    return results
+drug_names_input = input("Enter drug names separated by commas: ")
+results = check_compatibility_for_multiple_drugs(drug_names_input, df)
+for result in results:
+    print(result)
