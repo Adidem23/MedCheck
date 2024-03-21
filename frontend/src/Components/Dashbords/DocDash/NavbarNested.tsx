@@ -32,8 +32,8 @@ export function NavbarNested() {
 
   return (
     <>
-    <div style={{display:'flex',flexDirection:'row'}}>
-    <nav className={classes.navbarMain} style={{height:'100vh'}}>
+    <div style={{display:'flex',flexDirection:'row',height:'fit-content'}}>
+    <nav className={classes.navbarMain} >
       <div className={classes.header}>
         <Group justify="space-between">
           <Logo style={{ width: rem(120) }} />

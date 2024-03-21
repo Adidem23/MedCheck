@@ -6,6 +6,11 @@ const mongoose = require('mongoose');
 const UsersDB = require('./Models/User');
 const DoctorsDb = require('./Models/Doctors');
 const PatientDb = require('./Models/Patients');
+const axios = require('axios');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const genAI = new GoogleGenerativeAI("AIzaSyDfazWK5xqM82qJqxGTfqrWMac6PE8Cz6o");
+const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
 
 app.use(express.json());
 app.use(CORS({
@@ -100,6 +105,36 @@ app.get("/getAllPatients", async (req, res) => {
         console.log(`${err} Occured while Fetching data`);
     })
 })
+
+
+app.post("/GivePres", async (req, res) => {
+    const Drugsdata = req.body.AllMedicines;
+    try {
+
+        const responseData = await axios.post(`http://127.0.0.1:8000/check/${Drugsdata[0]}/${Drugsdata[1]}`);
+
+        if (responseData.data=== "Notcompatible") {
+            const prompt = `How ${Drugsdata[0]} and ${Drugsdata[1]} are not Compatible??`;
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            const text = response.text();
+            const Reason="NotCompatible"
+            const Actualtext={
+                text:text,
+                Reason:Reason
+            }
+            res.send(Actualtext);
+        }else{
+            res.send("Drugs are Compatible");
+        }
+
+    } catch {
+        err => {
+            console.log(`${err} is Occured`);
+        }
+    }
+
+});
 
 app.listen(PORT, () => {
     console.log(`Server is Running on PORT:${PORT}`)

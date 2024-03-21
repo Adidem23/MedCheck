@@ -1,11 +1,19 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Divider, Input, Button, Image } from "@nextui-org/react";
+import { IconPlus } from '@tabler/icons-react';
 
 
 const AllPatientsCard = () => {
 
     const [AllPatients, setAllPatients] = useState([]);
+    const [ClickedIndex, setClickedIndex] = useState(-1);
+    const [PresCInput, setPresCInput] = useState("");
+    const [AllMedicines, setAllMedicines] = useState([]);
+
+    const handlePlusButtonClick = (index) => {
+        setClickedIndex(index);
+    }
 
     const FetchAllPatients = async () => {
         await axios.get("http://localhost:9000/getAllPatients").then((res) => {
@@ -16,6 +24,22 @@ const AllPatientsCard = () => {
         })
     }
 
+    const AddPrescribedList = () => {
+        const listPrec = document.querySelector("#listPrec");
+        const Lichild = document.createElement('li');
+        AllMedicines.push(`${PresCInput}`);
+        Lichild.innerHTML = `<div>${PresCInput}</div>`;
+        listPrec.appendChild(Lichild);
+    }
+
+    const MakeRequesttoModel = async () => {
+        await axios.post("http://localhost:9000/GivePres", { AllMedicines: AllMedicines }, { withCredentials: true }).then((res) => {
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(`${err} is Occured`);
+        })
+    }
+
     useEffect(() => {
         FetchAllPatients();
     }, []);
@@ -23,9 +47,9 @@ const AllPatientsCard = () => {
 
     return (
         <>
-            {AllPatients && AllPatients.map((val) => {
+            {AllPatients && AllPatients.map((val, index) => {
                 return (<>
-                    <Card className="bg-black text-white" style={{ border: '3px solid grey', marginLeft: '20px' ,width:'420px'}}>
+                    <Card className="bg-black text-white" style={{ border: '3px solid grey', marginLeft: '20px', width: '460px' }}>
                         <CardHeader className="flex gap-3">
                             <Image
                                 alt="nextui logo"
@@ -44,15 +68,54 @@ const AllPatientsCard = () => {
                             <p>Make beautiful websites regardless of your design experience.</p>
                         </CardBody>
                         <Divider />
-                        <CardFooter>
-                            <Link
-                                isExternal
-                                showAnchorIcon
-                                href="https://github.com/nextui-org/nextui"
-                            >
-                                Visit source code on GitHub.
-                            </Link>
+                        <CardFooter className='flex flex-column'>
+                            {ClickedIndex !== index && <>
+                                <div className='flex flex-row' id='MedicinesDiv'>
+                                    <IconPlus stroke={0.9} onClick={() => { handlePlusButtonClick(index) }} />
+                                    &nbsp;
+                                    <p>Give Prescription</p>
+                                </div>
+                            </>}
+
                         </CardFooter>
+
+                        {ClickedIndex === index ? <>
+                            <div>
+                                <div className='flex flex-row' style={{ marginLeft: '20px' }}>
+                                    <Input
+                                        type="text"
+                                        label="Enter Medicines"
+                                        className="max-w-xs bg-black text-white"
+                                        onChange={(e) => { setPresCInput(e.target.value) }}
+                                    />
+                                    <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px', marginTop: '10px' }} onClick={AddPrescribedList}>
+                                        Add
+                                    </Button>
+                                </div>
+
+                                <br />
+
+                                <div style={{ display: 'block', margin: 'auto', marginLeft: '20px' }} >
+                                    <ul id='listPrec'>
+                                        {/* <li className='flex flex-row'>Hi &nbsp; <IconCircleX /> </li> */}
+                                    </ul>
+                                </div>
+
+                                <br />
+
+
+                                <div className='flex flex-row' style={{ marginBottom: '20px' }}>
+                                    <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px' }}>
+                                        Prescribe
+                                    </Button>
+                                    <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px' }} onClick={MakeRequesttoModel}>
+                                        Check
+                                    </Button>
+                                    <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px' }}>
+                                        Cancel
+                                    </Button>
+                                </div>
+                            </div></> : <></>}
                     </Card>
                 </>)
             })}

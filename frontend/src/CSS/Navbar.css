@@ -35,7 +35,7 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     /* Increased gap */
 }
 
@@ -49,14 +49,14 @@ body {
     color: whitesmoke;
     text-decoration: none;
     transition: color 0.3s;
-    padding: 0.5rem 0.75rem;
+    /* padding: 0.5rem 0.75rem; */
 }
 
 .icons li a {
     color: whitesmoke;
     text-decoration: none;
     transition: color 0.3s;
-    padding: 0.5rem 0.75rem;
+    /* padding: 0.5rem 0.75rem; */
 }
 
 .nav-links li a:hover {
