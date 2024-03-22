@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image,Button,Avatar} from "@nextui-org/react";
 import {useState} from 'react';
+import Use from '../../Components/Images/Use.png';
 
 export default function NextUICard() {
     return (
@@ -40,15 +41,15 @@ export function NextUICardTwo() {
     return (
         <Card className="py-4 bg-black" style={{ border: '3px solid grey'}}>
             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <p className="text-tiny uppercase font-bold text-white">Daily Mix</p>
-                <small className="text-default-500 text-white">12 Tracks</small>
-                <h4 className="font-bold text-large text-white">Frontend Radio</h4>
+                <p className="text-tiny uppercase font-bold text-white">Many Features</p>
+                <small className="text-default-500 text-white">5 services</small>
+                <h4 className="font-bold text-large text-white">Making Medical Tasks Simplified</h4>
             </CardHeader>
             <CardBody className="overflow-visible py-2">
                 <Image
                     alt="Card background"
                     className="object-cover rounded-xl"
-                    src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/news/2024/03_15_usa/cover_new.jpg"
+                    src={Use}
                     width={270}
                 />
             </CardBody>

@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 import pandas as pd
 import itertools
+import csv
 
 app = FastAPI()
 
@@ -82,8 +83,6 @@ async def suugest_compatibility_endpoint(drug_name: str):
     return substitute_drugs
 
 
-
-
 def get_precautions(drug_name, df):
     drug_row = df[df['name'].str.lower() == drug_name.lower()]
 
@@ -105,3 +104,28 @@ async def food_endpoints(drug_names: str):
     final_output = ' '.join(all_precautions)
     print(final_output)
     return final_output
+
+
+def search_drug(csv_file, drug_name, drug_component):
+    with open(csv_file, mode='r') as file:
+        csv_reader = csv.reader(file)
+        next(csv_reader)
+        for row in csv_reader:
+            row_name = row[1].strip().lower()
+            row_component1 = row[7].strip().lower()
+            row_component2 = row[8].strip().lower()
+            if drug_name.strip().lower() in row_name and (drug_component.strip().lower() in row_component1 or drug_component.strip().lower() in row_component2):
+                return row_name, row[1]
+    return None, None
+
+@app.post("/allergy/{Allergy_c}/{drug_names}")
+async def allergy_endpoints(Allergy_c:str,drug_names:str):
+    user_drug_name = Allergy_c.strip()
+    user_drug_component = drug_names.strip()
+    csv_file_path = './A_Z_medicines_dataset_of_India.csv'
+
+    drug_name_found, product_name = search_drug(csv_file_path, user_drug_name, user_drug_component)
+    if drug_name_found and product_name:
+        return "Avoid This Drug!"
+    else:
+       return "You Can use this Drug"

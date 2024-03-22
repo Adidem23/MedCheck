@@ -139,10 +139,13 @@ app.post("/UpdatePatientProfile", async (req, res) => {
     PatientDb.findOneAndUpdate(query, update)
         .then(updatedDocument => {
             console.log("Updated document:", updatedDocument);
+            res.send(updatedDocument)
         })
         .catch(error => {
             console.error("Error occurred:", error);
         });
+
+
 
 })
 
@@ -202,6 +205,46 @@ app.post("/giveSuggestiveDrug", async (req, res) => {
 
     res.send([Response.data])
 
+})
+
+
+app.post("/PatientPro", async (req, res) => {
+
+    const UserMail = req.body.UserEmail;
+
+    PatientDb.findOne({ Email: UserMail }).then((item) => {
+        res.send(item);
+    }).catch((err) => {
+        console.log(`${err} is Occured`);
+    })
+})
+
+
+app.post("/AddPatientsData", async (req, res) => {
+    const Email = req.body.Email;
+    const Medicines = req.body.AllDrugs;
+
+    const query = { Email: Email };
+    const update = { $push: { MedicinesGiven: Medicines } };
+
+    PatientDb.findOneAndUpdate(query, update)
+        .then(updatedDocument => {
+            console.log("Patients data has Been Updated");
+            res.send(updatedDocument.MedicinesGiven);
+        })
+        .catch(error => {
+            console.error("Error occurred:", error);
+        });
+
+
+});
+
+app.post("/allergy", async (req, res) => {
+    const Drug = req.body.Drug;
+    const Content = req.body.Content;
+    console.log(Drug,Content)
+    const Response = await axios.post(`http://127.0.0.1:8000/allergy/${Drug}/${Content}`);
+    res.send(Response.data);
 })
 
 app.listen(PORT, () => {

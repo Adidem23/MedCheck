@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Divider, Input, Button, Image, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Divider, Input, Button, Image, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Popover, PopoverTrigger, PopoverContent, Tooltip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 import { IconPlus } from '@tabler/icons-react';
+import { IconNotebook } from '@tabler/icons-react';
 
 
 const AllPatientsCard = () => {
@@ -14,6 +15,9 @@ const AllPatientsCard = () => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [compatibleText, setcompatibleText] = useState("");
     const [CompatiblePairs, setCompatiblePairs] = useState();
+    const [AllPreciptionsReal, setAllPreciptionsReal] = useState("");
+    const [PrescriptionList, setPrescriptionList] = useState()
+    const AllMedicinesGiven = [];
 
 
     const handlePlusButtonClick = (index) => {
@@ -55,6 +59,16 @@ const AllPatientsCard = () => {
         })
     }
 
+    const PrescribeDrugToPatients = async (Email) => {
+        await axios.post("http://localhost:9000/AddPatientsData", { Email: Email, AllDrugs: AllPreciptionsReal }, { withCredentials: true }).then((res) => {
+            console.log(res.data);
+            setPrescriptionList(res.data);
+        }).catch((err) => {
+            console.log(`${err} is Occured`);
+        })
+        console.log(Email)
+    }
+
     useEffect(() => {
         FetchAllPatients();
     }, []);
@@ -76,6 +90,16 @@ const AllPatientsCard = () => {
                                 <p className="text-md">{val.Name}</p>
                                 <p className="text-small text-default-500">{val.Email}</p>
                             </div>
+                            <Dropdown>
+                                <DropdownTrigger>
+                                    <IconNotebook />
+                                </DropdownTrigger>
+                                {PrescriptionList && PrescriptionList.map((val) => {
+                                    return (<><DropdownMenu>
+                                         <DropdownItem><p>{val}</p></DropdownItem>
+                                        </DropdownMenu></>)
+                                })}
+                            </Dropdown>
                         </CardHeader>
                         <Divider />
                         <div className='flex flex-row'>
@@ -84,9 +108,13 @@ const AllPatientsCard = () => {
                                 <p>Age  &nbsp;  {val.Age} Years</p>
                                 <p>Weight  &nbsp;  {val.Weight} KG</p>
                             </CardBody>
-                            <CardBody>
-                                <p><ul>Medical History <li style={{ listStyle: 'initial' }}>{val.MedicalHistory.map((item) => { return (<>&nbsp; {item}</>) })}</li></ul></p>
+                            <CardBody className="flex flex-row">
+                                <p><ul>History <li>{val.MedicalHistory.map((item) => { return (<>&nbsp; {item}</>) })}</li></ul></p>
+
+                                <p style={{ marginLeft: '20px' }}><ul>Allergy<li>{val.Allergy.map((item) => { return (<>&nbsp; {item}</>) })}</li></ul></p>
+
                             </CardBody>
+
                         </div>
                         <Divider />
                         <CardFooter className='flex flex-column'>
@@ -168,17 +196,31 @@ const AllPatientsCard = () => {
 
 
                                 <div className='flex flex-row' style={{ marginBottom: '20px' }}>
-                                    <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px' }}>
-                                        Prescribe
-                                    </Button>
+                                    <Tooltip content={<>
+                                        <>
+                                            <Input
+                                                isClearable
+                                                type="email"
+                                                label="Drugs"
+                                                variant="bordered"
+                                                className="max-w-xs"
+                                                onChange={(e) => { setAllPreciptionsReal(e.target.value) }}
+                                            />
+                                            <br />
+                                            <br />
+                                            <Button onClick={() => { PrescribeDrugToPatients(val.Email) }} radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" >Submit</Button>
+                                        </>
+                                    </>}>
+                                        <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px' }} >
+                                            Prescribe
+                                        </Button>
+                                    </Tooltip>
+
                                     <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px' }} onClick={MakeRequesttoModel}>
                                         Check
                                     </Button>
                                     <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px' }} onClick={(e) => { e.preventDefault(); PrecautionsRequest(); onOpen() }}>
                                         Precautions
-                                    </Button>
-                                    <Button radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg" style={{ marginLeft: '20px' }}>
-                                        Cancel
                                     </Button>
                                 </div>
                             </div></> : <></>}

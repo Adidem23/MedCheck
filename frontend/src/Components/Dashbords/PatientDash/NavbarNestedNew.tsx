@@ -10,7 +10,8 @@ import {
 } from '@tabler/icons-react';
 import { UserButton } from './UserButton';
 import { LinksGroup } from './NavbarLinksGroup';
-import { Logo } from './Logo';
+import DashLogo from '../PatientDash/DashLogo';
+import Alldoctors from './Pages/Alldoctors';
 import classes from '../../../Components/Dashbords/PatientDash/NavbarNested.module.css';
 
 const mockdata = [
@@ -23,7 +24,6 @@ const mockdata = [
       { label: 'FillProfile', link: '' },
     ],
   },
-  { label: 'EHR', icon: IconPresentationAnalytics ,links:[{label:'HealthRecord',link:''}] },
   { label: 'Profile', icon: IconAdjustments, links: [{ label: 'PersonalProfile', link: '/profile' }] },
 ];
 
@@ -36,7 +36,7 @@ export function NavbarNestedNew() {
         <nav className={classes.navbarMain} style={{background:'#3b3b3b',color:'white'}} >
           <div className={classes.header}>
             <Group justify="space-between">
-              <Logo style={{ width: rem(120) }} />
+              <DashLogo />
               <Code fw={700}>PatientDashBoard</Code>
             </Group>
           </div>
@@ -50,7 +50,7 @@ export function NavbarNestedNew() {
           </div>
         </nav>
         <div className='text-white' id="ManupulateDivNew" style={{ width: '80%', height: '100vh' }}>
-          Patients 
+          <Alldoctors />
         </div>
       </div>
     </>

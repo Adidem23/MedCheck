@@ -1,6 +1,5 @@
 import '../../CSS/Features.css';
 import { FeatureGrid } from './FeatureGrid';
-import { TabsDemo } from './TabsDemo';
 
 
 const Features = () => {
@@ -10,7 +9,6 @@ const Features = () => {
             <br />
             <br />
             <FeatureGrid />
-            <TabsDemo />
 
         </>
 

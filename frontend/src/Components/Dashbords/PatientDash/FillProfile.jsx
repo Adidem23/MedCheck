@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react';
+import PatientProfile from './Pages/PatientProfile';
 
 const FillProfile = ({ UserEmail }) => {
 
@@ -24,8 +25,6 @@ const FillProfile = ({ UserEmail }) => {
 
   const UpdateProfile = async (e) => {
     e.preventDefault();
-
-    // setFilledProfile(true);
 
     alert('Patient updated Profile');
 
@@ -103,7 +102,7 @@ const FillProfile = ({ UserEmail }) => {
         </div >
 
 
-      </div></> : <><p>You Have Filled Your Profile</p></>}
+      </div></> : <><PatientProfile Email={UserEmail}/></>}
 
     </>
   )

@@ -6,6 +6,7 @@ import Prescription from './Pages/Prescription';
 import ReactDOM from 'react-dom/client';
 import { useNavigate } from 'react-router-dom';
 import SubstituteDrug from './Pages/SubstituteDrug';
+import Allergy from './Pages/Allergy';
 import classes from '../../../Components/Dashbords/DocDash/NavbarLinksGroup.module.css';
 
 interface LinksGroupProps {
@@ -32,10 +33,14 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
           ReactDOM.createRoot(Div).render(<Allpatients />);
         } else if (link.label === "AllPrescriptions") {
           ReactDOM.createRoot(Div).render(<Prescription />);
-        } else if(link.label==="PersonalProfile") {
-          window.location.href="http://localhost:5173/profile"
-        } else if(link.label==="SuggestDrug"){
+        } else if (link.label === "PersonalProfile") {
+          window.location.href = "http://localhost:5173/profile"
+        } else if (link.label === "SuggestDrug") {
           ReactDOM.createRoot(Div).render(<SubstituteDrug />);
+        }else if(link.label==="Allergy"){
+          ReactDOM.createRoot(Div).render(<Allergy />);
+        }else if(link.label==="ScduleMeet"){
+          window.location.href=link.link
         }
 
       }}

@@ -18,7 +18,8 @@ const Main = () => {
       <FirstCards />
       <br />
       <br />
-      <BentoGridDemo />
+      <br />
+      <br />
       <br />
       <SwiperR />
       <br />
@@ -27,6 +28,7 @@ const Main = () => {
       <TimeLineTop />
       <Timeline />
       <br />
+      <BentoGridDemo />
       <div className='flex flex-row'>
       <Contact />
       <GlobeDemo />

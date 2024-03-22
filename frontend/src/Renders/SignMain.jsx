@@ -18,7 +18,6 @@ const SignMain = () => {
       <FirstCards />
       <br />
       <br />
-      <BentoGridDemo />
       <br />
       <SwiperR />
       <br />
@@ -27,6 +26,7 @@ const SignMain = () => {
       <TimeLineTop />
       <Timeline />
       <br />
+      <BentoGridDemo />
       <div className='flex flex-row'>
       <Contact />
       <GlobeDemo />

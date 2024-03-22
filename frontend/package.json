@@ -13,6 +13,7 @@
     "@clerk/clerk-react": "^4.30.7",
     "@clerk/themes": "^1.7.10",
     "@headlessui/react": "^1.7.18",
+    "@lighthouse-web3/sdk": "^0.3.0",
     "@mantine/core": "^7.6.2",
     "@mantine/hooks": "^7.6.2",
     "@mantinex/mantine-logo": "^1.0.1",

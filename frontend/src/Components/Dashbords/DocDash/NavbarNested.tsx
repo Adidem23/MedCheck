@@ -13,18 +13,13 @@ import { LinksGroup } from '../DocDash/NavbarLinksGroup';
 import DashLogo from '../DocDash/DashLogo'
 import { IconPill } from '@tabler/icons-react';
 import classes from '../DocDash/NavbarNested.module.css';
+import Allpatients from './Pages/Allpatients';
 
 const mockdata = [
-  { label: 'Patients', icon: IconGauge,links:[{ label: 'AllPatients',link:''}]},
-  {
-    label: 'Prescriptions',
-    icon: IconNotes,
-    initiallyOpened: false,
-    links: [
-      { label: 'AllPrescriptions',link:''},
-    ],
-  },
+  {label:'Patients', icon:IconCalendarStats,links:[{label:'AllPatients',link:''}]},
   { label: 'SubstituteDrug', icon: IconPill ,links:[{label:'SuggestDrug',link:''}]},
+  { label: 'SceduleMeet', icon: IconPill ,links:[{label:'ScduleMeet',link:'https://refmemeet.vercel.app/'}]},
+  {label:'Allergy', icon:IconCalendarStats,links:[{label:'Allergy',link:''}]},
   { label: 'Profile', icon: IconAdjustments,links:[{ label: 'PersonalProfile',link:'/profile'}]},
 ];
 
@@ -51,7 +46,7 @@ export function NavbarNested() {
       </div>
     </nav>
     <div className='text-white' id="ManupulateDiv" style={{width:'80%',height:'100vh'}}>
-    MaxVerstappen
+    <Allpatients />
     </div>
     </div>
     </>
