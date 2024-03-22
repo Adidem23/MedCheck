@@ -58,3 +58,50 @@ async def check_compatibility_endpoint(drug_names: str):
     for res in results:
         print(res)
     return results
+
+
+df1 = pd.read_csv('./medicine_dataset.csv',low_memory=False)
+
+def get_substitute_drugs(drug_name, df1):
+    first_word = drug_name.split()[0].lower()
+
+    drug_row = df1[df1['name'].str.startswith(first_word)]
+
+    if drug_row.empty:
+        return f"No substitute drugs found for {drug_name}."
+    else:
+        substitutes = drug_row[['substitute0', 'substitute1', 'substitute2', 'substitute3', 'substitute4']].iloc[0]
+        substitutes = substitutes.dropna()
+        return f"{substitutes.to_string(index=False)}"
+
+
+@app.post("/Suggest/{drug_name}")
+async def suugest_compatibility_endpoint(drug_name: str):
+    substitute_drugs = get_substitute_drugs(drug_name, df1)
+    print(substitute_drugs)
+    return substitute_drugs
+
+
+
+
+def get_precautions(drug_name, df):
+    drug_row = df[df['name'].str.lower() == drug_name.lower()]
+
+    if drug_row.empty:
+        return f"Precautions for {drug_name} are not available."
+    else:
+        precautions = drug_row['food-interactions'].iloc[0]
+        return f"{precautions}"
+
+@app.post("/food/{drug_names}")
+async def food_endpoints(drug_names: str):
+    drug_names_list = [drug.strip() for drug in drug_names.split(',')]
+    all_precautions = []
+
+    for drug_name in drug_names_list:
+        precautions = get_precautions(drug_name, df)
+        all_precautions.append(precautions)
+
+    final_output = ' '.join(all_precautions)
+    print(final_output)
+    return final_output

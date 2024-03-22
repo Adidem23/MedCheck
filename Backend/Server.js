@@ -153,7 +153,7 @@ app.post("/GivePres", async (req, res) => {
         const responseData = await axios.post(`http://127.0.0.1:8000/check/${Drugsdata}`);
 
         async function GenerateGeminiResponse(elem) {
-            const prompt = `Justify this Sentence ${elem} in 500 words and tell level of  Severity of non-compatibleness`;
+            const prompt = `Justify this Sentence ${elem} in 200 words and tell level of  Severity of non-compatibleness`;
             const result = await model.generateContent(prompt);
             const response = await result.response;
             const text = response.text();
@@ -162,17 +162,17 @@ app.post("/GivePres", async (req, res) => {
                 text: text,
                 Data: responseData.data
             }
-            try{
+            try {
                 res.send(Actualtext)
-            }catch{err =>console.log(`${err} is occured`)};
+            } catch { err => console.log(`${err} is occured`) };
         }
 
         responseData.data.forEach((elem) => {
             if (elem.includes("are compatible")) {
 
-            }else if(elem.includes("Sorry for the inconvenience")){
+            } else if (elem.includes("Sorry for the inconvenience")) {
 
-            }else {
+            } else {
                 GenerateGeminiResponse(elem)
             }
         })
@@ -185,6 +185,24 @@ app.post("/GivePres", async (req, res) => {
     }
 
 });
+
+
+app.post("/givePrecautions", async (req, res) => {
+    const Drugsdata = req.body.AllMedicines;
+    const Response = await axios.post(`http://127.0.0.1:8000/food/${Drugsdata}`);
+    res.send(Response.data);
+})
+
+
+app.post("/giveSuggestiveDrug", async (req, res) => {
+
+    const drug = req.body.Drug;
+
+    const Response = await axios.post(`http://127.0.0.1:8000/Suggest/${drug}`);
+
+    res.send([Response.data])
+
+})
 
 app.listen(PORT, () => {
     console.log(`Server is Running on PORT:${PORT}`)

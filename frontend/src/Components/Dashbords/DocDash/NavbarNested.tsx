@@ -10,7 +10,8 @@ import {
 } from '@tabler/icons-react';
 import { UserButton } from '../DocDash/UserButton';
 import { LinksGroup } from '../DocDash/NavbarLinksGroup';
-import { Logo } from './Logo';
+import DashLogo from '../DocDash/DashLogo'
+import { IconPill } from '@tabler/icons-react';
 import classes from '../DocDash/NavbarNested.module.css';
 
 const mockdata = [
@@ -23,7 +24,7 @@ const mockdata = [
       { label: 'AllPrescriptions',link:''},
     ],
   },
-  { label: 'Analytics', icon: IconPresentationAnalytics },
+  { label: 'SubstituteDrug', icon: IconPill ,links:[{label:'SuggestDrug',link:''}]},
   { label: 'Profile', icon: IconAdjustments,links:[{ label: 'PersonalProfile',link:'/profile'}]},
 ];
 
@@ -36,7 +37,7 @@ export function NavbarNested() {
     <nav className={classes.navbarMain} >
       <div className={classes.header}>
         <Group justify="space-between">
-          <Logo style={{ width: rem(120) }} />
+          <DashLogo />
           <Code fw={700}>DoctorDashboard</Code>
         </Group>
       </div>

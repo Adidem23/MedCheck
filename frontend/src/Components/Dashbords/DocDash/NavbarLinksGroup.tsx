@@ -5,6 +5,7 @@ import Allpatients from './Pages/Allpatients';
 import Prescription from './Pages/Prescription';
 import ReactDOM from 'react-dom/client';
 import { useNavigate } from 'react-router-dom';
+import SubstituteDrug from './Pages/SubstituteDrug';
 import classes from '../../../Components/Dashbords/DocDash/NavbarLinksGroup.module.css';
 
 interface LinksGroupProps {
@@ -33,6 +34,8 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }: LinksG
           ReactDOM.createRoot(Div).render(<Prescription />);
         } else if(link.label==="PersonalProfile") {
           window.location.href="http://localhost:5173/profile"
+        } else if(link.label==="SuggestDrug"){
+          ReactDOM.createRoot(Div).render(<SubstituteDrug />);
         }
 
       }}
