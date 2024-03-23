@@ -36,7 +36,7 @@ Medcheck is a cutting-edge platform designed to provide users with comprehensive
 - Medcheck Provides Drug to Drug Viablity Checking Mechanism along with precautions and Reason for the medical Viability
 
 ### Substitue Drug Sugesstion : 
-- It has one feature where 
+- It has one feature where it suggests alternative drug for the given drug 
 
 # Video :
 - Youtube : 
