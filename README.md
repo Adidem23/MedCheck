@@ -85,7 +85,9 @@ npm run dev
 ```sh
 nodemon Server (If You Have Nodemon Installed) / node Server(If you Do not Have Nodemon)
 ```
-5 . 
+5 . Do not Kill Both terminals and Go to AIModels Folder 
+
+6 . 
 
 # Deployments :
 
