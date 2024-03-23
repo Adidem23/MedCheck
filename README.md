@@ -117,4 +117,15 @@ uvicorn main:app --reload
 <br />
 <br />
 <br />
---- 
+
+# Authentication and User Auth : 
+
+<br />
+<img width="960"  src="https://github.com/Adidem23/MedCheck/assets/124609794/e23a457f-29ad-46b5-95a4-8dca04047b86" alt="Screenshot 2024-01-02 222928" >
+<br />
+<br />
+<br />
+
+
+
+
