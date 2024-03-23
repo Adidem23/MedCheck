@@ -87,7 +87,13 @@ nodemon Server (If You Have Nodemon Installed) / node Server(If you Do not Have 
 ```
 5 . Do not Kill Both terminals and Go to AIModels Folder 
 
-6 . 
+6 . Run Command to activate Venv 
+```sh
+./DrugToDrug/Scripts/activate 
+```
+
+7. Now our VEnv is activated now run fastAPI Server With Command
+
 
 # Deployments :
 
