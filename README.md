@@ -74,8 +74,7 @@ npm run start
 
 # Deployments :
 
-- Deployed Site : https://refmemeet.vercel.app/
-- Associated Project : https://devfolio.co/projects/referhub-46fa
+- Deployed Site : 
 
 # Screenshots :
 
@@ -83,20 +82,6 @@ npm run start
 
 <br />
 <img width="960"  src="https://github.com/Adidem23/RefMeet/assets/124609794/da15341e-32a0-43e6-9df8-b90f8d82baad" alt="Screenshot 2024-01-02 222928" >
-<br />
-<br />
-<br />
-
-# CreateMeet :
-
-<br />
-<img width="960"  src="https://github.com/Adidem23/RefMeet/assets/124609794/916ce99b-2efc-4ac8-b442-ed73ef364219" alt="Screenshot 2024-01-02 222928" >
-<br />
-<br />
-<br />
-
-<br />
-<img width="960"  src="https://github.com/Adidem23/RefMeet/assets/124609794/943783fd-5090-4a4b-abb0-3ec20a3c0c5a" alt="Screenshot 2024-01-02 222928" >
 <br />
 <br />
 <br />
