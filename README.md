@@ -48,7 +48,7 @@ Medcheck is a cutting-edge platform designed to provide users with comprehensive
  - [![My Skills](https://skillicons.dev/icons?i=express&perline=3)](https://skillicons.dev) ExpressJs
  - [![My Skills](https://skillicons.dev/icons?i=python&perline=3)](https://skillicons.dev) Python
  - [![My Skills](https://skillicons.dev/icons?i=mongodb&perline=3)](https://skillicons.dev) Mongodb
- - 
+ - Alongside with It is Built Using UI Libraries NextUI , Mantine.DEV.UI 
 
 
 # Prerequisites : 
