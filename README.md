@@ -81,7 +81,11 @@ npm run dev
 
 3. Do not Kill the frontend Terminal and Open New terminal and go to Backend Terminal
 
-4 . 
+4. Run Following Command in Backend Folder
+```sh
+nodemon Server (If You Have Nodemon Installed) / node Server(If you Do not Have Nodemon)
+```
+5 . 
 
 # Deployments :
 
