@@ -74,12 +74,12 @@ There are Three Folder Respectively AIModels , Frontend and Backend
    npm install --force
  ```
 
-2. Run Following Command in terminal
+2. Run Following Command and Your Frontend Will be On localhost:5173
 ```sh
-npm run start
+npm run dev 
 ```
 
-3. App is Running on localhost:3000 😎
+3. 
 
 # Deployments :
 
