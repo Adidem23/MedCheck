@@ -153,3 +153,10 @@ uvicorn main:app --reload
 <br />
 <br />
 <br />
+
+<br />
+<img width="960"  src="https://github.com/Adidem23/MedCheck/assets/124609794/f4f99980-95c9-4a73-9502-7a4f37949186" alt="Screenshot 2024-01-02 222928" >
+<br />
+<br />
+<br />
+
