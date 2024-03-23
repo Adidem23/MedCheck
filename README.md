@@ -140,3 +140,11 @@ uvicorn main:app --reload
 <br />
 <br />
 
+# DoctorDashboard : 
+
+<br />
+<img width="960"  src="https://github.com/Adidem23/MedCheck/assets/124609794/f03f42dd-1fc5-4e4b-bd8c-509955d2828f" alt="Screenshot 2024-01-02 222928" >
+<br />
+<br />
+<br />
+
