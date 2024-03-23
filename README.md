@@ -93,7 +93,10 @@ nodemon Server (If You Have Nodemon Installed) / node Server(If you Do not Have 
 ```
 
 7. Now our VEnv is activated now run fastAPI Server With Command
-
+```sh
+uvicorn main:app --reload 
+```
+8 . Do Not kill any Terminal and You are good to go 
 
 # Deployments :
 
