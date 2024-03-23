@@ -79,7 +79,7 @@ There are Three Folder Respectively AIModels , Frontend and Backend
 npm run dev 
 ```
 
-3. 
+3. Do not Kill the frontend Terminal and Open New terminal 
 
 # Deployments :
 
