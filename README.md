@@ -103,7 +103,8 @@ uvicorn main:app --reload
 
 # Deployments :
 
-- Deployed Site : 
+- Deployed Site : https://medcheckadidem.netlify.app
+- Deployed Meet Platform : 
 
 # Screenshots :
 
