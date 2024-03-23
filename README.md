@@ -175,7 +175,7 @@ uvicorn main:app --reload
 # Patient DashBoard : 
 
 <br />
-<img width="960"  src="" alt="Screenshot 2024-01-02 222928" >
+<img width="960"  src="https://github.com/Adidem23/MedCheck/assets/124609794/a6db2079-8f64-449e-98b5-b5a53986526a" alt="Screenshot 2024-01-02 222928" >
 <br />
 <br />
 <br />
