@@ -104,7 +104,7 @@ uvicorn main:app --reload
 # Deployments :
 
 - Deployed Site : https://medcheckadidem.netlify.app
-- Deployed Meet Platform : 
+- Deployed Meet Platform : https://refmemeet.vercel.app/
 
 # Screenshots :
 
