@@ -50,7 +50,6 @@ Medcheck is a cutting-edge platform designed to provide users with comprehensive
  - [![My Skills](https://skillicons.dev/icons?i=mongodb&perline=3)](https://skillicons.dev) Mongodb
  - Alongside with It is Built Using UI Libraries NextUI , Mantine.DEV.UI 
 
-
 # Prerequisites : 
 
 * npm
@@ -66,9 +65,10 @@ Medcheck is a cutting-edge platform designed to provide users with comprehensive
 # Installation : 
 
 Follow The Installation manual and install dependencies 
+
 There are Three Folder Respectively AIModels , Frontend and Backend 
 
-1. Run Command 
+1. Go to Frontend Folder and Run Command 
  ```sh
    npm install --force
  ```
