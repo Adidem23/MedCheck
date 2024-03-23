@@ -66,6 +66,7 @@ Medcheck is a cutting-edge platform designed to provide users with comprehensive
 # Installation : 
 
 Follow The Installation manual and install dependencies 
+There are Three Folder Respectively AIModels , Frontend and Backend 
 
 1. Run Command 
  ```sh
