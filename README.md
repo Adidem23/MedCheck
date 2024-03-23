@@ -1,7 +1,5 @@
 <div align="center">
- ![Herbal_medicine_with_leaf_logo-removebg-preview](https://github.com/Adidem23/MedCheck/assets/124609794/9844f613-0280-457e-89a2-380449966249)
-
- <img src="https://github.com/Adidem23/RefMeet/assets/124609794/2b1756ed-de36-4cc1-a261-dee60dfb970a" height="150px" width="150px" />
+ <img src="https://github.com/Adidem23/MedCheck/assets/124609794/9844f613-0280-457e-89a2-380449966249 height="150px" width="150px" />
   <h3 align="center"> Medcheck : Unlocking Safety in Every Pill</h3>
 </div>
 <details>
