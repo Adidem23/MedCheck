@@ -30,9 +30,10 @@
 ## Key Features :
 
 ### OTP Based Varification :
-- Mecheck 
+- Mecheck Provides OTP based Authentication for the users Verificition 
 
-
+### Drug to Drug Viablity Checking : 
+- 
 
 # Video :
 - Youtube : 
