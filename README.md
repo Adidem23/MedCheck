@@ -1,6 +1,6 @@
 <div align="center">
  <img src="https://github.com/Adidem23/RefMeet/assets/124609794/2b1756ed-de36-4cc1-a261-dee60dfb970a" height="150px" width="150px" />
-  <h3 align="center"> RefMeet : The PeerToPeer Meeting Platform </h3>
+  <h3 align="center"> Medcheck : Unlocking Safety in Every Pill</h3>
 </div>
 <details>
   <summary>Table of Contents</summary>
