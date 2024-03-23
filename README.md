@@ -79,7 +79,9 @@ There are Three Folder Respectively AIModels , Frontend and Backend
 npm run dev 
 ```
 
-3. Do not Kill the frontend Terminal and Open New terminal 
+3. Do not Kill the frontend Terminal and Open New terminal and go to Backend Terminal
+
+4 . 
 
 # Deployments :
 
